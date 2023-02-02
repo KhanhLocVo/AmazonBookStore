@@ -34,7 +34,7 @@
     <main>
       
         <!--? Popular Items Start -->
-        <div class="popular-items section-padding30">
+        <div class="popular-items">
             <div class="container">
                 <!-- Section tittle -->
                 <div class="row justify-content-center">
@@ -70,34 +70,66 @@
                 <!-- Button -->
                 <div class="row justify-content-center">
                     <div class="room-btn pt-70">
-                        <a href="${pageContext.request.contextPath}/" class="btn view-btn1">View More Products</a>
+                        <a href="${pageContext.request.contextPath}/" class="btn view-btn1">Best-Selling Books</a>
                     </div>
                 </div>
-            </div>
-        </div>
-        <!-- Popular Items End -->
-      
-        <!--? Watch Choice  Start-->
-        <div class="watch-area section-padding30">
-            <div class="container">
-                <div class="row align-items-center justify-content-between padding-130">
-                    <div class="col-lg-5 col-md-6">
-                        <div class="watch-details mb-40">
-                            <h2>Most-favored Books</h2>
-                            <p>Enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse.</p>
-                            <a href="${pageContext.request.contextPath}/" class="btn">Show Watches</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-10">
-                        <div class="choice-watch-img mb-40">
-                            <img src="assets/img/gallery/choce_watch1.png" alt="">
-                        </div>
+                <br>
+                <div class="row">
+							<c:forEach items="${listBestSellingBooks}" var="book">
+								<div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
+									<div class="single-popular-items mb-50 text-center">
+										<div class="popular-img">
+											<img src="data:image/jpg;base64,${book.base64Image}" width="200px;" height="380px;"/>
+											<div class="img-cap">
+												<span>Add to cart</span>
+											</div>
+										</div>
+										<div class="popular-caption">
+											<h3>
+												<a href="view_book?id=${book.bookId}">${book.title}</a>
+											</h3>
+											<div><i>by ${book.author}</i></div>
+											<span>$ ${book.price }</span>
+											<div><jsp:directive.include file="book_rating.jsp" /></div>
+										</div>
+									</div>
+								</div>
+							</c:forEach>
+						</div>
+						
+				 <div class="row justify-content-center">
+                    <div class="room-btn pt-70">
+                        <a href="${pageContext.request.contextPath}/" class="btn view-btn1">Most-favored Books</a>
                     </div>
                 </div>
+                <br>
+                <div class="row">
+							<c:forEach items="${listFavoredBooks}" var="book">
+								<div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
+									<div class="single-popular-items mb-50 text-center">
+										<div class="popular-img">
+											<img src="data:image/jpg;base64,${book.base64Image}" width="200px;" height="380px;"/>
+											<div class="img-cap">
+												<span>Add to cart</span>
+											</div>
+										</div>
+										<div class="popular-caption">
+											<h3>
+												<a href="view_book?id=${book.bookId}">${book.title}</a>
+											</h3>
+											<div><i>by ${book.author}</i></div>
+											<span>$ ${book.price }</span>
+											<div><jsp:directive.include file="book_rating.jsp" /></div>
+										</div>
+									</div>
+								</div>
+							</c:forEach>
+						</div>
+                
                 
             </div>
         </div>
-        <!-- Watch Choice  End-->
+        <!-- Popular Items End -->
       
     </main>
     
